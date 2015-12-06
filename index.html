@@ -13,12 +13,13 @@
 </head>
 
 <body>
-    <ul class="menu">
-    </ul>
-    Name:
-    <input type="text" data-ng-model="name" />
-    <br />
-    <button ng-click="echo()">Echo From Qt</button>
+    <form ng-submit="echo()">
+        <ul class="menu">
+        </ul>
+        Name:
+        <input type="text" data-ng-model="name" />
+        <br />
+        <button>Echo From Qt</button>
+    </form>
 </body>
-
 </html>
