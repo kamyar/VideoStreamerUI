@@ -1,1 +1,24 @@
-Hello World!
+<html ng-app="playerApp" ng-controller="streamController">
+
+<head>
+    <title> Sample Qt WebChannel+Angular Demo(Video Streamer)</title>
+    <!-- Externa Modules -->
+    <script src="js/modules/qwebchannel.js" type="text/javascript"></script>
+
+    <!-- Andular Files -->
+    <script src="js/modules/angular.js"></script>
+    <script src="app.js"></script>
+    <script src="js/services.js"></script>
+    <script src="js/controllers.js"></script>
+</head>
+
+<body>
+    <ul class="menu">
+    </ul>
+    Name:
+    <input type="text" data-ng-model="name" />
+    <br />
+    <button ng-click="echo()">Echo From Qt</button>
+</body>
+
+</html>
