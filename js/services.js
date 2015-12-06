@@ -10,6 +10,7 @@ function qtInterfaceService(){
     	return function(){
 	    	if(!this_qt.initialized){
 	    		console.error("Qt Service is not Initialized or has been closed.");
+	    		return;
 	    	}
 	    	callbackFunc.apply(null, arguments);
 	    }
