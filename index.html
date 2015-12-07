@@ -13,13 +13,11 @@
 </head>
 
 <body>
-    <form ng-submit="echo()">
-        <ul class="menu">
-        </ul>
-        Name:
-        <input type="text" data-ng-model="name" />
-        <br />
-        <button>Echo From Qt</button>
-    </form>
+    <!-- <button type="button" ng-click="flipStreamState()">{{buttonText}}</button> -->
+
+    <!-- <label ng-show="isStreaming"> LOL </label> -->
+    <button type="button" ng-click="flipStreamState()">{{buttonTexts[isStreaming]}}</button>
+    <br />
+    <img ng-src="data:image/jpg;base64,{{currFrameData}}">
 </body>
 </html>

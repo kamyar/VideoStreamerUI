@@ -1,5 +1,5 @@
 
-function qtInterfaceService(){
+function qtInterfaceService($rootScope){
 	this_qt = this;
     this_qt.initialized = false;
 
@@ -39,21 +39,37 @@ function qtInterfaceService(){
 				this_qt.channel = new QWebChannel(socket, function(channel){
 						this_qt.channel = channel;
 	    				this_qt.initialized = true;
-						console.log(this_qt.channel.objects);
+						$rootScope.$broadcast('qtservice.channel_open')
 				});
 			}
 		};
 	}
 
 	//method for sending echo.
-	this_qt.echo = function(msg, callback){
-			this_qt.channel.objects.videoStreamer.echo(msg, callback);
+	startStream = function(callback){
+
+			this_qt.channel.objects.videoStreamer.startStream();
 	};
-	this_qt.echo = this_qt.initCheck_D(this_qt.echo);
+	this_qt.startStream = this_qt.initCheck_D(startStream);
+
+	stopStream = function(callback){
+
+			this_qt.channel.objects.videoStreamer.stopStream();
+	};
+	this_qt.stopStream = this_qt.initCheck_D(stopStream);
+
+
+
+	//register handler for specific method of given endPoint(class)
+	registerHandler = function(endPoint, signalName, signalHandler){
+		this_qt.channel.objects[endPoint][signalName].connect(signalHandler);
+	};
+	this_qt.registerHandler = this_qt.initCheck_D(registerHandler);
+
 }
 
 
 
 
 angular.module('playerApp')
-	.service('qtInterfaceService', [qtInterfaceService]);
+	.service('qtInterfaceService', ['$rootScope', qtInterfaceService]);
